@@ -14,9 +14,10 @@ To customize the script for your needs, you can modify the following variables:
 1. **$iso_url:** The URL of the Ubuntu server ISO. By default, it points to the latest release, but you can change it if you need a specific version.
 2. **$iso_outfile:** The local path where the Ubuntu ISO will be downloaded. By default, it's set to "C:\HYPER-V\ubuntu-22.04.2-live-server-amd64.iso".
 3. **$vm_name:** The name of the virtual machine that will be created.
-4. **$vm_path:** The local path where the VM files will be stored. By default, it's set to "C:\HYPER-V\$vm_name".
-5. **$vhd_path:** The local path where the VHD (Virtual Hard Disk) of the VM will be stored. By default, it's set to "$vm_path\$vm_name.vhdx".
-**Note:** It's recommended to keep the "$generation" and "$secure_boot" variables unchanged unless you have specific reasons to modify them. These options affect the VM's generation and secure boot settings.
+4. **$vm_path:** The local path where the VM files will be stored. By default, it's set to "C:\HYPER-V\\$vm_name".
+5. **$vhd_path:** The local path where the VHD (Virtual Hard Disk) of the VM will be stored. By default, it's set to "$vm_path\\$vm_name.vhdx".
+
+**Note:** It's recommended to keep the ```$secure_boot``` variable unchanged unless you have specific reason to modify it. Ubuntu will not boot in Hyper-V with Secure Boot enabled.
 
 ## Usage
 1. Clone or download this repository to your local machine.
