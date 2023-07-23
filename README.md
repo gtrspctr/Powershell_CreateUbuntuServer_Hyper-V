@@ -1,13 +1,36 @@
 # Powershell_CreateUbuntuServer_Hyper-V
-Powershell script to quickly download and boot an Ubuntu server.
+Powershell_CreateUbuntuServer_Hyper-V is a PowerShell script that allows you to quickly download and boot an Ubuntu server in Hyper-V on Windows.
 
-### Pre-Requisites
-This script assumes the following is already in place:
-1. Hyper-V is installed and your device is capable of hosting virtualized devices.
-2. There is already a Virtual Switch created in Hyper-V.
+## Description
+This PowerShell script automates the process of downloading the latest Ubuntu server ISO and creating a virtual machine (VM) in Hyper-V with the specified configuration. It's designed to streamline the setup of an Ubuntu server VM, making it easy to get started with Ubuntu on Hyper-V.
 
-### Customization
-Lines 2-15 define the URL for the Ubuntu .iso download, the filepaths, and the VM settings.
-Make sure you customize these however you'd like.
+## Pre-Requisites
+Before running the script, ensure you have the following pre-requisites:
+1. **Hyper-V installed and running:** The script relies on Hyper-V to create and manage the virtual machine. Ensure that Hyper-V is installed and enabled on your Windows machine.
+2. **PowerShell with elevated privileges:** Run the PowerShell script as an administrator to ensure it has the necessary permissions to create VMs and directories.
 
-I recommend leaving the ```$generation``` and ```$secure_boot``` variables how they are unless you have specific reason to change them. For example, I don't think Ubuntu will even boot with the Secure Boot option enabled.
+## Customizing URL, Paths, and VM Options
+To customize the script for your needs, you can modify the following variables:
+1. **$iso_url:** The URL of the Ubuntu server ISO. By default, it points to the latest release, but you can change it if you need a specific version.
+2. **$iso_outfile:** The local path where the Ubuntu ISO will be downloaded. By default, it's set to "C:\HYPER-V\ubuntu-22.04.2-live-server-amd64.iso".
+3. **$vm_name:** The name of the virtual machine that will be created.
+4. **$vm_path:** The local path where the VM files will be stored. By default, it's set to "C:\HYPER-V\$vm_name".
+5. **$vhd_path:** The local path where the VHD (Virtual Hard Disk) of the VM will be stored. By default, it's set to "$vm_path\$vm_name.vhdx".
+**Note:** It's recommended to keep the "$generation" and "$secure_boot" variables unchanged unless you have specific reasons to modify them. These options affect the VM's generation and secure boot settings.
+
+## Usage
+1. Clone or download this repository to your local machine.
+2. Open a PowerShell console with elevated privileges (Run as Administrator).
+3. Navigate to the directory containing the script.
+4. Customize the URL, paths, and VM options as needed (if necessary).
+5. Run the script using the following command:  ```.\Create-Ubuntu-VM.ps1```
+6. Follow the on-screen prompts and monitor the script's progress in the console.
+7. Once the VM is created and booted, continue with the Ubuntu installation process inside the VM.
+
+## Contributing
+Feel free to contribute to this script by opening issues or pull requests. Your feedback and contributions are welcome!
+
+## License
+This script is open-source and available under the [MIT License](LICENSE).
+Enjoy your new Ubuntu server on Hyper-V!
+asdf
