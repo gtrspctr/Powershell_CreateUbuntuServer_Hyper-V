@@ -8,6 +8,6 @@ This script assumes the following is already in place:
 
 ### Customization
 Lines 2-15 define the URL for the Ubuntu .iso download, the filepaths, and the VM settings.
-Make sure you customize those however you'd like.
+Make sure you customize these however you'd like.
 
 I recommend leaving the ```$generation``` and ```$secure_boot``` variables how they are unless you have specific reason to change them. For example, I don't think Ubuntu will even boot with the Secure Boot option enabled.
