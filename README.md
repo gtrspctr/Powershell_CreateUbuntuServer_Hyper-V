@@ -33,4 +33,3 @@ Feel free to contribute to this script by opening issues or pull requests. Your 
 ## License
 This script is open-source and available under the [MIT License](LICENSE).
 Enjoy your new Ubuntu server on Hyper-V!
-asdf
