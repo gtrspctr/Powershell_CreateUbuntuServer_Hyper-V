@@ -93,4 +93,4 @@ Write-Host "VM firmware options configured."
 Write-Host "Booting VM '$vm_name'..."
 Start-VM -VMName $vm_name
 Write-Host "VM '$vm_name' booted."
-Write-Host "Continue installing the Ubuntu OS.
+Write-Host "Continue installing the Ubuntu OS."
