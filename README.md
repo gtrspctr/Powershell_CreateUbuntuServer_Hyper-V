@@ -7,7 +7,8 @@ This PowerShell script automates the process of downloading the latest Ubuntu se
 ## Pre-Requisites
 Before running the script, ensure you have the following pre-requisites:
 1. **Hyper-V installed and running:** The script relies on Hyper-V to create and manage the virtual machine. Ensure that Hyper-V is installed and enabled on your Windows machine.
-2. **PowerShell with elevated privileges:** Run the PowerShell script as an administrator to ensure it has the necessary permissions to create VMs and directories.
+2. **Virtual Switch created:** A virtual switch must be created in Hyper-V. This is essentially a NIC for the virtual machine to use for networking.
+3. **PowerShell with elevated privileges:** Run the PowerShell script as an administrator to ensure it has the necessary permissions to create VMs and directories.
 
 ## Customizing URL, Paths, and VM Options
 To customize the script for your needs, you can modify the following variables:
