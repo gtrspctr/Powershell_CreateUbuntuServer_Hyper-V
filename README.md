@@ -21,12 +21,12 @@ To customize the script for your needs, you can modify the following variables:
 **Note:** It's recommended to keep the ```$secure_boot``` variable unchanged unless you have specific reason to modify it. Ubuntu will not boot in Hyper-V with Secure Boot enabled.
 
 ## Usage
-1. Clone or download this repository to your local machine.
+1. Clone or download this repository to your local machine, or simply download or copy/paste 'Create-Ubuntu-VM.ps1' and save it to your local computer.
 2. Open a PowerShell console with elevated privileges (Run as Administrator).
 3. Navigate to the directory containing the script.
 4. Customize the URL, paths, and VM options as needed (if necessary).
 5. Run the script using the following command:  ```.\Create-Ubuntu-VM.ps1```
-6. Follow the on-screen prompts and monitor the script's progress in the console.
+6. Monitor the script's progress in the console.
 7. Once the VM is created and booted, continue with the Ubuntu installation process inside the VM.
 
 ## Contributing
