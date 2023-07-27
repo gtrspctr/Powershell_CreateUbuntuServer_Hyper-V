@@ -6,9 +6,9 @@ $iso_outfile = "C:\HYPER-V\ubuntu-22.04.2-live-server-amd64.iso"
 $vm_name = "ubuntu_3"
 $vm_path = "C:\HYPER-V\$vm_name"
 $vhd_path = "$vm_path\$vm_name.vhdx"
-$switch_name = "New Virtual Switch"
 
 # VM settings
+$switch_name = "New Virtual Switch"
 $memory_size = 2GB
 $vhd_size = 10GB
 $generation = 2
@@ -56,7 +56,7 @@ if (Get-VM -Name $vm_name -ErrorAction SilentlyContinue) {
 
 # Download ubuntu installer
 $ProgressPreference = "SilentlyContinue"  # Disables progress bar, speeding up download
-if (!(Test-Path -Path $iso_outfile)) {
+if (-Not (Test-Path -Path $iso_outfile)) {
     Write-Host "Downloading Ubuntu .iso..."
     Invoke-WebRequest -Uri $iso_url -Outfile $iso_outfile
     Write-Host "File downloaded."
@@ -89,8 +89,15 @@ Set-VMFirmware -VMName $vm_name `
                 $(Get-VMNetworkAdapter -VMName $vm_name)
 Write-Host "VM firmware options configured."
 
-# Start VM
+# Start VM and verify it is running
 Write-Host "Booting VM '$vm_name'..."
 Start-VM -VMName $vm_name
-Write-Host "VM '$vm_name' booted."
-Write-Host "Continue installing the Ubuntu OS."
+Start-Sleep -Seconds 5
+$vm_state = (Get-VM -VMName $vm_name).State
+if ($vm_state -eq "Running") {
+    Write-Host "VM '$vm_name' booted."
+    Write-Host "Continue installing the Ubuntu OS."
+} else {
+    Write-Host "VM '$vm_name' does not appear to be running."
+    Write-Host "Please check Hyper-V for any errors."
+}
