@@ -1,9 +1,9 @@
 # Define Ubuntu .iso URL and outfile
-$iso_url = "https://releases.ubuntu.com/22.04.2/ubuntu-22.04.2-live-server-amd64.iso"
-$iso_outfile = "C:\HYPER-V\ubuntu-22.04.2-live-server-amd64.iso"
+$iso_url = "https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"
+$iso_outfile = "C:\HYPER-V\ubuntu-22.04.3-live-server-amd64.iso"
 
 # Local paths for VM
-$vm_name = "ubuntu_3"
+$vm_name = "ubuntu"
 $vm_path = "C:\HYPER-V\$vm_name"
 $vhd_path = "$vm_path\$vm_name.vhdx"
 
@@ -91,7 +91,7 @@ Write-Host "VM firmware options configured."
 
 # Start VM and verify it is running
 Write-Host "Booting VM '$vm_name'..."
-Start-VM -VMName $vm_name
+Start-VM -VMName $vm_name | Out-Null
 Start-Sleep -Seconds 5
 $vm_state = (Get-VM -VMName $vm_name).State
 if ($vm_state -eq "Running") {
