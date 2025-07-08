@@ -1,3 +1,36 @@
+<#
+.SYNOPSIS
+
+
+.DESCRIPTION
+
+#>
+
+# Define URLs
+$base_lookup_url = "https://releases.ubuntu.com"
+
+# Get available versions
+function Get-AvailableVersions {
+    $versions = @()
+    
+    $page_data = Invoke-WebRequest -Uri $base_lookup_url -UseBasicParsing
+    $links = $page_data.Links | Where-Object -Property "href" -Match "^\d{2}\.\d{2}(\.\d+)?/$" | Select-Object -ExpandProperty "href"
+
+    return $links.Replace("/", "")
+}
+
+# Display available versions
+$available_versions = Get-AvailableVersions
+$counter = 1
+$prompt = @"
+Which version do you want to download?
+$(foreach ($version in $available_versions){"$counter. $version`n";$counter += 1})
+Your answer
+"@
+$response = Read-Host -Prompt $prompt
+
+################################################
+
 # Define Ubuntu .iso URL and outfile
 $iso_url = "https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"
 $iso_outfile = "C:\HYPER-V\ubuntu-22.04.3-live-server-amd64.iso"
