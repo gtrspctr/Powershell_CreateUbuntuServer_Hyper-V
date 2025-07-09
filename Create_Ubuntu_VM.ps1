@@ -8,11 +8,11 @@
 
 # Define URLs
 $base_lookup_url = "https://releases.ubuntu.com"
+$download_dir = "C:\LocalShit"
+$ProgressPreference = "SilentlyContinue"
 
 # Get available versions
 function Get-AvailableVersions {
-    $versions = @()
-    
     $page_data = Invoke-WebRequest -Uri $base_lookup_url -UseBasicParsing
     $links = $page_data.Links | Where-Object -Property "href" -Match "^\d{2}\.\d{2}(\.\d+)?/$" | Select-Object -ExpandProperty "href"
 
@@ -28,6 +28,24 @@ $(foreach ($version in $available_versions){"$counter. $version`n";$counter += 1
 Your answer
 "@
 $response = Read-Host -Prompt $prompt
+$combined_url = "$base_lookup_url/$($available_versions[$response - 1])"
+
+# Get download link
+function Get-DownloadLink {
+    param (
+        [string]$Uri
+    )
+
+    $page_data = Invoke-WebRequest -Uri $Uri -UseBasicParsing
+    $link = $page_data.Links | Where-Object -Property "href" -Match "live-server-amd64.iso$" | Select-Object -ExpandProperty "href" -Unique
+
+    return $link
+}
+
+# Download file
+$link = Get-DownloadLink -Uri $combined_url
+$outfile = "$download_dir\$link"
+Invoke-WebRequest -Uri "$combined_url/$link" -Outfile $outfile
 
 ################################################
 
