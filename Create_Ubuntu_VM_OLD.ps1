@@ -49,6 +49,20 @@ Invoke-WebRequest -Uri "$combined_url/$link" -Outfile $outfile
 
 ################################################
 
+function Main {
+    # Variables
+    $old_progress_pref = $ProgressPreference
+
+    # Initial Checks
+    # disk space
+    # internet connectivity to site
+    # cpu and memory
+    # hyper-v installed
+}
+
+
+################################################
+
 # Define Ubuntu .iso URL and outfile
 $iso_url = "https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"
 $iso_outfile = "C:\HYPER-V\ubuntu-22.04.3-live-server-amd64.iso"
