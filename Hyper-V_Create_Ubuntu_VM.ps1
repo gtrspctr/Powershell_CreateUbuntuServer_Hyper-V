@@ -10,17 +10,20 @@
     Last modified: 2025-08-16
 #>
 
+
+
 function Get-FreeDiskSpace {
     param(
         [string]$DriveLetter
     )
 
     try {
-        $drive = Get-PSDrive -Name $DriveLetter
-        $
+        $drive = (Get-PSDrive -Name $DriveLetter).Free /1GB
+        return $drive
     }
     catch {
-        <#Do this if a terminating exception happens#>
+        Write-Host "Error getting disk space."
+        return false
     }
 }
 
