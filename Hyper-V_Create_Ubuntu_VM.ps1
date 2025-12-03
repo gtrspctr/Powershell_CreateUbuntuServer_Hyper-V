@@ -20,10 +20,9 @@ function Get-FreeDiskSpace {
     try {
         $drive = (Get-PSDrive -Name $DriveLetter).Free /1GB
         return $drive
-    }
-    catch {
+    } catch {
         Write-Host "Error getting disk space."
-        return false
+        return $null
     }
 }
 
@@ -34,4 +33,6 @@ function Test-DiskSpace {
     )
 
     # compares the values of Get-FreeDiskSpace and the requirements
+
 }
+
